@@ -2,9 +2,6 @@
 
 namespace SimpleCaptcha\Helpers;
 
-use SimpleCaptcha\Helpers\F;
-
-
 /**
  * The `Mime` class provides method
  * for MIME type detection or guessing
@@ -168,10 +165,10 @@ class Mime
      * Returns the MIME type of a file
      *
      * @param string $file
-     * @param string $extension
+     * @param string|null $extension
      * @return string|false
      */
-    public static function type(string $file, string $extension = null)
+    public static function type(string $file, ?string $extension = null)
     {
         // use the standard finfo extension
         $mime = static::fromFileInfo($file);

@@ -13,4 +13,18 @@
             <directory name="vendor" />
         </ignoreFiles>
     </projectFiles>
+
+    <issueHandlers>
+        <!-- Don't warn about methods only available in later PHP versions -->
+        <UndefinedMethod>
+            <errorLevel type="suppress">
+                <referencedMethod name="Random\Randomizer::getFloat" />
+            </errorLevel>
+        </UndefinedMethod>
+        <UndefinedClass>
+            <errorLevel type="suppress">
+                <referencedClass name="Random\Randomizer" />
+            </errorLevel>
+        </UndefinedClass>
+    </issueHandlers>
 </psalm>

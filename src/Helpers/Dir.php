@@ -49,11 +49,11 @@ class Dir
      * Get all files
      *
      * @param string $dir
-     * @param array $ignore
+     * @param array|null $ignore
      * @param bool $absolute
      * @return array
      */
-    public static function files(string $dir, array $ignore = null, bool $absolute = false): array
+    public static function files(string $dir, ?array $ignore = null, bool $absolute = false): array
     {
         $result = array_values(array_filter(static::read($dir, $ignore, true), 'is_file'));
 
@@ -108,11 +108,11 @@ class Dir
      * It skips unwanted invisible stuff.
      *
      * @param string $dir The path of directory
-     * @param array $ignore Optional array with filenames, which should be ignored
+     * @param array|null $ignore Optional array with filenames, which should be ignored
      * @param bool $absolute If true, the full path for each item will be returned
      * @return array An array of filenames
      */
-    public static function read(string $dir, array $ignore = null, bool $absolute = false): array
+    public static function read(string $dir, ?array $ignore = null, bool $absolute = false): array
     {
         if (is_dir($dir) === false) {
             return [];
