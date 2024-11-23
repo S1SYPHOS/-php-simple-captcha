@@ -1072,7 +1072,13 @@ class Builder extends BuilderAbstract
      */
     private function random_float(float|int $min, float|int $max): float
     {
-        # See https://www.php.net/manual/en/function.mt-rand.php#75793
-        return ($min + lcg_value() * (abs($max - $min)));
+        if (class_exists(\Random\Randomizer::class) && method_exists(\Random\Randomizer::class, "getFloat")) {
+            # getFloat() was introduced in PHP 8.3
+            $randomizer = new \Random\Randomizer();
+            return $randomizer->getFloat($min, $max);
+        } else {
+            # See https://www.php.net/manual/en/function.mt-rand.php#75793
+            return ($min + lcg_value() * (abs($max - $min)));
+        }
     }
 }

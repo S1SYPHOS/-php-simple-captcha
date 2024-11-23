@@ -45,10 +45,10 @@ class F
      * Checks if the file exists on disk
      *
      * @param string $file
-     * @param string $in
+     * @param string|null $in
      * @return bool
      */
-    public static function exists(string $file, string $in = null): bool
+    public static function exists(string $file, ?string $in = null): bool
     {
         try {
             static::realpath($file, $in);
@@ -62,11 +62,11 @@ class F
     /**
      * Gets the extension of a file
      *
-     * @param string $file The filename or path
-     * @param string $extension Set an optional extension to overwrite the current one
+     * @param string|null $file The filename or path
+     * @param string|null $extension Set an optional extension to overwrite the current one
      * @return string
      */
-    public static function extension(string $file = null, string $extension = null): string
+    public static function extension(?string $file = null, ?string $extension = null): string
     {
         // overwrite the current extension
         if ($extension !== null) {
@@ -130,10 +130,10 @@ class F
      * Returns the absolute path to the file if the file can be found.
      *
      * @param string $file
-     * @param string $in
+     * @param string|null $in
      * @return string|null
      */
-    public static function realpath(string $file, string $in = null)
+    public static function realpath(string $file, ?string $in = null)
     {
         $realpath = realpath($file);
 
